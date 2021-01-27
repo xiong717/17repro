@@ -9,6 +9,7 @@ public class testDemo {
         binaryTree.postOrderTraversal(root);
         System.out.println();
 
+
         binaryTree.getSize1(root);
         System.out.println(binaryTree.size);
 
