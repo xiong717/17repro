@@ -8,6 +8,7 @@ class BTNode {
 }
 
 
+
 public class BinaryTree {
 
     /*
@@ -25,6 +26,7 @@ public class BinaryTree {
         BTNode F = new BTNode('F');
         BTNode G = new BTNode('G');
         BTNode H = new BTNode('H');
+
         A.left = B;
         A.right = C;
         B.left = D;
