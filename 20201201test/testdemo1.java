@@ -15,6 +15,7 @@ public class testdemo1 {
         System.out.println(minValue - 1);
     }
 
+    
     public static void main2(String[] args) {
         //long占8个字节 表示范围-2^63至2^63-1
         long a = 10l;
