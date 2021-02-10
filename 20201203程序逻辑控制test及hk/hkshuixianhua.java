@@ -1,6 +1,7 @@
 import java.util.Scanner;
 
 public class hkshuixianhua {
+    
     public static void main1(String[] args) {
         //求出0～999之间的所有“水仙花数”并输出。“水仙花数”是指一个三位数，其各位数字的立方和确好等于该数本身
         for(int i = 0;i < 1000;i++){
