@@ -6,6 +6,7 @@ class BTNode {
         this.val = val;
     }
 }
+
 public class BinaryTree {
 
     /*
