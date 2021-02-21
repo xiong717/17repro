@@ -135,12 +135,34 @@ public class methodclass {
         return num+sumOr(num-1);
     }
 
-    public static void main(String[] args) {
+    public static void main8(String[] args) {
         int n = 10;
         System.out.println(sumOr(n));
     }
 
+    //求一个数各个位数的和 例1729等于1+7+2+9=
+    public static int sum1(int n) {
+        if (n < 10) {
+            return n;
+        }
+        return n%10+sum1(n/10);
+    }
 
+    public static void main9(String[] args) {
+        System.out.println(sum1(1729));
+    }
+
+    //求斐波那契数列第n项
+    public static int fib(int n) {
+        if (n == 1||n==2) {
+            return 1;
+        }
+        return fib(n-1)+fib(n-2);
+    }
+
+    public static void main10(String[] args) {
+        System.out.println(fib(4));
+    }
 }
 
 
