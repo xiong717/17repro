@@ -1,3 +1,4 @@
+import javax.swing.*;
 import java.util.Arrays;
 
 public class text1 {
@@ -156,6 +157,35 @@ public class text1 {
         }
     }
 
+    //二维数组
+    //定义
+    public static void main(String[] args) {
 
+        int[][] arr = {{1, 2, 3}, {4, 5, 6}, {7, 8, 9}, {10, 11, 12}};
+        int[][] array = new int[4][3];//默认 二维数组是0
+        //定义时 列可以省略，行不能省略
+        int[][] array1 = new int[4][];
+        //也可以行列均不写
+        int[][] array2 = new int[][]{{1, 2, 3}, {4, 5, 6}, {7, 8, 9}, {10, 11, 12}};
 
+        //二维数组打印
+        for (int row = 0; row<arr.length;row++) {
+            for (int col = 0; col< arr[row].length;col++) {
+                System.out.print(arr[row][col]+" ");
+            }
+            System.out.println();
+        }
+        System.out.println("=======================");
+        //for-each打印
+        for (int[]arr1:arr) {
+          for (int x : arr1) {
+              System.out.print(x+" ");
+          }
+            System.out.println();
+        }
+        System.out.println("=======================");
+        String ret = Arrays.deepToString(arr);
+        System.out.println(ret);
+
+    }
 }
