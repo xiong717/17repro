@@ -34,7 +34,17 @@ public class MyLinkList {
         System.out.println();
     }
 
-    
+    public int size() {
+        int count = 0;
+        Node cur = this.head;
+        while (cur != null) {
+            count++;
+            cur = cur.next;
+        }
+        return count;
+    }
+
+    //通过遍历 找到倒数第一个节点
     public Node findLastNode() {
         Node cur = this.head;
         while (cur.next != null) {
@@ -43,6 +53,7 @@ public class MyLinkList {
         return cur;
     }
 
+    //通过遍历 找到倒数第二个节点
     public Node findLastTwoNode() {
         if (this.head == null) {
             System.out.println("没有节点");
@@ -57,6 +68,42 @@ public class MyLinkList {
             cur = cur.next;
         }
         return cur;
+    }
+
+    //通过遍历 找到第n个节点
+    public Node findn(int n) {
+        if (this.head == null) {
+            System.out.println("单链表为空");
+            return null;
+        }
+        if (n <= 0) {
+            System.out.println("n太小了");
+            return null;
+        }
+        if (n > size()) {
+            System.out.println("n太大了");
+            return null;
+        }
+        Node cur = this.head;
+        int count = 1;
+        while (count != n) {
+            count++;
+            cur = cur.next;
+        }
+        return cur;
+    }
+
+    //通过遍历 查找是否包含关键字key 是否在链表中
+    public boolean contains(int key) {
+        Node cur = this.head;
+        while (cur != null) {
+            if (cur.val != key) {
+                cur = cur.next;
+            }else {
+                return true;
+            }
+        }
+        return false;
     }
 
 
