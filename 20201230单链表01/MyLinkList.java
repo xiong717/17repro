@@ -1,3 +1,5 @@
+import com.sun.deploy.net.proxy.ProxyUnavailableException;
+
 class Node{
     public int val;
     public Node next;
@@ -106,6 +108,72 @@ public class MyLinkList {
         return false;
     }
 
+    //头插法
+    public void addFirst (int data) {
+        //1.先定义一个节点
+        Node node = new Node(data);
+        //判断链表是否为空
+        if (this.head == null) {
+            this.head = node;
+        } else {
+            //插入
+            node.next = this.head;
+            this.head = node;
+        }
+    }
 
+    //尾插法
+    public void addLast (int data) {
+        //先定义一个节点
+        Node node = new Node(data);
+        //判断链表是否为空
+        if (this.head == null) {
+            this.head = node;
+        }else {
+            //定义一个 cur 找到链表尾巴 插入
+            Node cur = this.head;
+            while (cur.next != null) {
+                cur = cur.next;
+            }
+            cur.next = node;
+        }
+    }
+
+    //遍历找到index-1 位置
+    public Node moveindex(int index) {
+        int count = 0;
+        Node cur = this.head;
+        while (count != index -1) {
+            cur = cur.next;
+            count++;
+        }
+        return cur;
+    }
+    //第一个数据节点为 0 任意一个位置插入一个数据节点
+    public void addindex(int index,int data) {
+        //先定义一个节点
+        Node node = new Node(data);
+        //判断链表是否为空
+        if (this.head == null) {
+            this.head = node;
+        }else {
+            if (index < 0 || index >size()) {
+                System.out.println("index位置不合法");
+                return;
+            }
+            if (index == 0) {
+                addFirst(data);
+                return;
+            }
+            if (index == size()) {
+                addLast(data);
+                return;
+            }
+            //找到index-1位置 插入
+            Node cur = moveindex(index);
+            node.next = cur.next;
+            cur.next = node;
+        }
+    }
 
 }
