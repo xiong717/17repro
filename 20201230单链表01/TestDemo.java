@@ -10,7 +10,7 @@ public class TestDemo {
         System.out.println(node1.next);//null
     }
 
-    public static void main(String[] args) {
+    public static void main2(String[] args) {
         MyLinkList myLinkList = new MyLinkList();
         ////这个函数结束之后，我们拿到了当前链表的头节点
         myLinkList.createLinked();
@@ -26,5 +26,40 @@ public class TestDemo {
         System.out.println(ret2.val);
         System.out.println("=====================");
         System.out.println(myLinkList.contains(422));
+    }
+
+    public static void main3(String[] args) {
+        MyLinkList myLinkList = new MyLinkList();
+        myLinkList.createLinked();
+        myLinkList.display();
+        myLinkList.addFirst(99);
+        myLinkList.addFirst(88);
+        myLinkList.display();
+        myLinkList.addLast(1);
+        myLinkList.addLast(2);
+        myLinkList.display();
+    }
+
+    public static void main(String[] args) {
+        MyLinkList myLinkList = new MyLinkList();
+        myLinkList.addFirst(11);
+        myLinkList.addFirst(22);
+        myLinkList.addFirst(33);
+        myLinkList.display();
+        System.out.println("==================");
+        myLinkList.addLast(1);
+        myLinkList.addLast(2);
+        myLinkList.addLast(3);
+        myLinkList.display();
+        System.out.println("====================");
+        myLinkList.addindex(2,67);
+        myLinkList.display();
+        System.out.println("=====================");
+        myLinkList.addindex(0,100);
+        myLinkList.display();
+        System.out.println("====================");
+        myLinkList.addindex(8,999);
+        myLinkList.display();
+
     }
 }
