@@ -176,4 +176,63 @@ public class MyLinkList {
         }
     }
 
+    //找到要删除节点的前驱
+    public Node searchPrev(int key) {
+        Node cur = this.head;
+        while (cur.next != null) {
+            if (cur.next.val == key) {
+                return cur;
+            }
+            cur = cur.next;
+        }
+        return null;
+
+    }
+
+     //删除第一次出现关键字为key的节点
+        public void remove(int key) {
+        if (this.head == null) {
+            return;
+        }
+         if(this.head.val==key) {
+             this.head = head.next;
+             return;
+         }
+         Node prev = searchPrev(key);
+         if (prev == null) {
+             System.out.println("没有找到该节点的前驱");
+         } else {
+             prev.next = prev.next.next;
+         }
+        }
+
+
+
+        //删除所有值为key的节点
+         public void removeAllKey(int key) {
+          if (this.head == null) {
+              System.out.println("没有链表");
+              return;
+          }
+           Node prev = this.head;
+           Node cur = this.head.next;
+           while (cur != null) {
+               if (cur.val == key) {
+                   prev.next = cur.next;
+                   cur = cur.next;
+               }else {
+                   prev = cur;
+                   cur = cur.next;
+               }
+           }
+           if (this.head.val == key) {
+               this.head = this.head.next;
+           }
+         }
+
+         //清除单链表 只要一个节点 没有引用（为null） 就会被jvm回收
+     public void clear() {
+        this.head = null;
+     }
+
 }
