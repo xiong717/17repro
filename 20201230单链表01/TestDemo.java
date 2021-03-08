@@ -40,7 +40,7 @@ public class TestDemo {
         myLinkList.display();
     }
 
-    public static void main(String[] args) {
+    public static void main4(String[] args) {
         MyLinkList myLinkList = new MyLinkList();
         myLinkList.addFirst(11);
         myLinkList.addFirst(22);
@@ -60,6 +60,27 @@ public class TestDemo {
         System.out.println("====================");
         myLinkList.addindex(8,999);
         myLinkList.display();
+        System.out.println("====================");
+        myLinkList.remove(999);
+        myLinkList.display();
+        myLinkList.remove(100);
+        myLinkList.display();
+        myLinkList.remove(11);
+        myLinkList.display();
+        myLinkList.remove(5);
+    }
 
+    public static void main(String[] args) {
+        MyLinkList myLinkList = new MyLinkList();
+        myLinkList.addFirst(18);
+        myLinkList.addFirst(24);
+        myLinkList.addLast(26);
+        myLinkList.addLast(24);
+        myLinkList.addindex(2,24);
+        myLinkList.display();
+        myLinkList.removeAllKey(24);
+        myLinkList.display();
+        myLinkList.clear();
+        myLinkList.display();
     }
 }
