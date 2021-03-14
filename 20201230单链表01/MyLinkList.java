@@ -8,8 +8,7 @@ class Node{
         this.val=val;
     }
     public Node() {
-    }
-    
+    }  
 }
 
 public class MyLinkList {
