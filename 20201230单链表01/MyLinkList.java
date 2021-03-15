@@ -9,6 +9,7 @@ class Node{
     }
     public Node() {
     }  
+    
 }
 
 public class MyLinkList {
