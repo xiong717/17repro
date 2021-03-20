@@ -65,6 +65,4 @@ public class MyLinkedList {
         return newhead;
     }
 
-    
-
 }
