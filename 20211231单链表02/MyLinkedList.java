@@ -48,7 +48,7 @@ public class MyLinkedList {
             cur.next = node;
         }
     }
-
+    //翻转链表
     public Node reviseList(Node head) {
         Node prev = null;
         Node cur = head;
@@ -64,5 +64,60 @@ public class MyLinkedList {
             }
         return newhead;
     }
+    public Node addtwoLists(Node l1,Node l2) {
+        Node newhead = new Node(1);
+        Node tmp = newhead;
+        while (l1 != null && l2 != null) {
+            if (l1.val <= l2.val) {
+                tmp.next = l1;
+                l1 = l1.next;
+                tmp = tmp.next;
+            }else {
+                tmp.next = l2;
+                l2 = l2.next;
+                tmp = tmp.next;
+            }
+            if (l1 == null) {
+                tmp.next = l2;
+            }
+            if (l2 == null) {
+                tmp.next = l1;
+            }
+        }
+        return newhead.next;
+    }
+
+    public boolean findhuiwen() {
+        if (this.head == null) {
+            return false;
+        }
+        //找到链表的之间位置
+        Node fast = this.head;
+        Node slow = this.head;
+        Node cur = this.head;
+        while (fast != null && fast.next != null) {
+            //自己写的错误 未 考虑到 fast.next != null
+            fast = fast.next.next;
+            slow = slow.next;
+        }
+        cur = slow.next;
+        while (cur != null ) {
+            Node curNext = cur.next;
+            cur.next = slow;
+            slow = cur;
+            cur = curNext;
+        }
+        while (head != slow) {
+            if (head.val == slow.val && head.next != slow) {
+                //偶数情况 是 head.next = slow
+                head = head.next;
+                slow = slow.next;
+            } else {
+                return false;
+            }
+        }
+        return true;
+    }
+    
 
 }
