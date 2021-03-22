@@ -13,7 +13,6 @@ public class TestDemo {
         Node newhead = myLinkedList.reviseList(myLinkedList.head);
         myLinkedList.display(newhead);
     }
-
     
     public static void main(String[] args) {
         Node node1 = new Node(12);
