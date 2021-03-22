@@ -14,6 +14,7 @@ public class TestDemo {
         myLinkedList.display(newhead);
     }
 
+    
     public static void main(String[] args) {
         Node node1 = new Node(12);
         Node node2 = new Node(22);
