@@ -13,8 +13,13 @@ public class TestDemo {
         Node newhead = myLinkedList.reviseList(myLinkedList.head);
         myLinkedList.display(newhead);
     }
+<<<<<<< HEAD
 
     public static void main2(String[] args) {
+=======
+    
+    public static void main(String[] args) {
+>>>>>>> 0777bcbc8f7b396c825194cc53aa6a3eeb714354
         Node node1 = new Node(12);
         Node node2 = new Node(22);
         Node node3 = new Node(27);
