@@ -1,0 +1,37 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>我的搜索</title>
+        <script src="jquery-1.9.1.min.js"></script>
+        <script>
+            function myck(type) {
+                var baidu_ur1 = "https://www.baidu.com";
+                var san_ur1 = "https://www.so.com/";
+                var sogou_ur1 = "https://www.sogou.com";
+                var ifm = jQuery("#ifm");
+                if(type == 1) {
+                    //内嵌百度
+                    ifm.attr("src",baidu_ur1);//拿属性
+                }
+                if(type == 2) {
+                    //内嵌谷歌
+                    ifm.attr("src",san_ur1);
+                }
+                if(type == 3) {
+                    //内嵌搜狗
+                    ifm.attr("src",sogou_ur1);
+                }
+            }
+        </script>
+    </head>
+    <body>
+
+        <div style="text-align:center;margin-top:40px;">
+            <input type="button" onclick="myck(1)"  value="百度"> &nbsp;&nbsp;
+            <input type="button" onclick="myck(2)"  value="360">&nbsp;&nbsp;
+            <input type="button" onclick="myck(3)"  value="搜狗">&nbsp;&nbsp;
+        </div>
+         <iframe id="ifm" style="width:80%;height:600px" src="https://v.bitedu.vip/login"></iframe>
+    </body>
+ 
+</html>
