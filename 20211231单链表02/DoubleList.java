@@ -1,8 +1,8 @@
 //先定义一个节点
 class ListNode {
-    private int val;
-    private ListNode next;
-    private ListNode prev;//private属性 用下面方法访问
+    public int val;
+    public ListNode next;
+    public ListNode prev;//private属性 用下面方法访问
     //alt+insert 选择 Constructor 按住ctrl 可选择几个变量
     public ListNode(int val) {
             this.val = val;
@@ -47,6 +47,17 @@ public class DoubleList {
         }
         System.out.println();
     }
+
+    //求链表长度
+    public int size() {
+        ListNode cur = this.head;
+        int count = 0;
+        while(cur != null) {
+            count++;
+            cur = cur.next;
+        }
+        return count;
+    }
     //头插法
     public void addFirst (int data) {
         //先有一个节点
@@ -74,5 +85,73 @@ public class DoubleList {
             node.setPrev(this.last);//node.prev = last;
             this.last = node;
         }
+    }
+
+    //任意位置插入一个节点 （第一个数据节点为0号下标）
+    public void addIindex(int index,int data) {
+        //先判断index的合法性
+        if (index < 0 || index > size()) {
+            return;
+        }
+        if (index == 0) {
+            addFirst(data);
+            return;
+        }
+        if (index == size()) {
+            addLast(data);
+            return;
+        }
+        ListNode cur = this.head;
+        while (index != 0) {
+            cur = cur.next;
+            index--;
+        }
+        ListNode node = new ListNode(data);
+        node.next = cur;
+        node.prev = cur.prev;
+        node.prev.next = node;
+        cur.prev = node;
+    }
+
+    //查找是否包含关键字key 在链表中
+    public boolean contains(int key) {
+        ListNode cur = this.head;
+        while (cur != null) {
+            if (cur.val == key) {
+                return true;
+            }
+            cur = cur.next;
+        }
+        return false;
+    }
+
+    public ListNode findnode(int key) {
+        ListNode cur = this.head;
+        while (cur != null) {
+            if (cur.val == key) {
+                return cur;
+            }
+            cur = cur.next;
+        }
+        return null;
+    }
+    //删除第一次出现关键字为key的节点
+    public void remove(int key) {
+        ListNode cur = this.findnode(key);
+        if(cur ==null) {
+         return;
+        }
+        if (cur == this.head) {
+            this.head = head.next;
+            this.head.prev = null;
+            return;
+        }
+        if (cur == this.last) {
+            cur.prev.next = null;
+            this.last = this.last.prev;
+            return;
+        }
+        cur.prev.next=cur.next;
+        cur.next.prev = cur.prev;
     }
 }
