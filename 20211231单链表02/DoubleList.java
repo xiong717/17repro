@@ -154,4 +154,66 @@ public class DoubleList {
         cur.prev.next=cur.next;
         cur.next.prev = cur.prev;
     }
+
+    //删除第一次出现的关键字 第二种方法
+    public void remove2(int key) {
+        ListNode cur = this.head;
+        while (cur != null) {
+            if (cur.val == key) {
+                if (cur == this.head) {
+                    //删头结点
+                    this.head = this.head.next;
+                    this.head.prev = null;
+                }else if (cur == this.last) {
+                    cur.prev.next = null;
+                    this.last = this.last.prev;
+                }else {
+                    cur.prev.next = cur.next;
+                    cur.next.prev = cur.prev;
+                }
+                return;
+            }
+            cur = cur.next;
+        }
+    }
+
+    //删除所有值为key的节点
+    public void removeallkey(int key) {
+        ListNode cur = this.head;
+        while (cur != null) {
+            if (cur.val == key) {
+                if (cur == this.head) {
+                    //删头结点
+                    this.head = this.head.next;
+                    this.head.prev = null;
+                }else if (cur == this.last) {
+                    cur.prev.next = null;
+                    this.last = this.last.prev;
+                }else {
+                    cur.prev.next = cur.next;
+                    cur.next.prev = cur.prev;
+                }
+            }
+            cur = cur.next;
+        }
+    }
+
+    //清理链表
+    public void clear() {
+        this.head = null;
+        this.last = null;
+    }//暴力删除
+
+    public void clear2() {
+        ListNode cur = this.head;
+        ListNode curNext = cur.next;
+        while (cur != null) {
+            cur.next = null;
+            cur.prev = null;
+            cur = curNext;
+        }
+        this.last = null;
+        this.head = null;
+        //一定要记得清除这个头和尾节点
+    }
 }
