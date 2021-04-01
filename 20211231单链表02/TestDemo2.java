@@ -19,7 +19,7 @@ public class TestDemo2 {
         doubleList.display();
     }
 
-    public static void main(String[] args) {
+    public static void main3(String[] args) {
         DoubleList doubleList = new DoubleList();
         doubleList.addLast(1);
         doubleList.addLast(2);
@@ -32,7 +32,21 @@ public class TestDemo2 {
         doubleList.addIindex(3,66);
         doubleList.display();
         System.out.println(doubleList.contains(88));
-        doubleList.remove(3);
+        doubleList.remove(66);
+        doubleList.display();
+        doubleList.remove2(88);
+        doubleList.remove2(99);
+        doubleList.display();
+    }
+    public static void main(String[] args) {
+        DoubleList doubleList = new DoubleList();
+        doubleList.addLast(2);
+        doubleList.addLast(2);
+        doubleList.addLast(3);
+        doubleList.addLast(4);
+        doubleList.addLast(2);
+        doubleList.display();
+        doubleList.removeallkey(2);
         doubleList.display();
     }
 }
