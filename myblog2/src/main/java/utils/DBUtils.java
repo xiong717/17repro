@@ -30,6 +30,7 @@ public class DBUtils {
     public static void close(Connection connection,
                              PreparedStatement statement,
                              ResultSet resultSet) throws SQLException {
+        //从小到大关闭接口
         if (resultSet != null) resultSet.close();
         if (statement != null) statement.close();
         if (connection!= null) connection.close();

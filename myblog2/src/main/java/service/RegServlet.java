@@ -1,7 +1,9 @@
 package service;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import dao.UserInfoDao;
 import models.Userinfo;
+import utils.ResultJSONUtils;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -10,6 +12,8 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
+import java.util.HashMap;
+import java.util.Map;
 
 public class RegServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -17,8 +21,9 @@ public class RegServlet extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-       response.setCharacterEncoding("utf-8");
-       response.setContentType("application/json");
+      /* response.setCharacterEncoding("utf-8");
+
+       response.setContentType("application/json");*/
 
        int state = -1;//200表示接口执行成功
        String msg ="";
@@ -34,7 +39,7 @@ public class RegServlet extends HttpServlet {
             Userinfo userinfo = new Userinfo();
             userinfo.setUsername(username);
             userinfo.setPassword(password);
-
+            //调用数据库的方法
             UserInfoDao userInfoDao = new UserInfoDao();
             try {
                 boolean res = userInfoDao.add(userinfo);
@@ -42,13 +47,18 @@ public class RegServlet extends HttpServlet {
                     //操作数据库成功
                     state = 200;
                 }else {
-                    state = 100;
+                    state = 100;//失败
                 }
             } catch (SQLException throwables) {
                 throwables.printStackTrace();
             }
         }
-        writer.println("{\"state\":"+state+",\"msg\":\""+msg+"\"}");
+
+        HashMap<String, Object> result = new HashMap<>();
+        result.put("state",state);
+        result.put("msg",msg);
+        ResultJSONUtils.writeMap(response,result);
+       // writer.println("{\"state\":"+state+",\"msg\":\""+msg+"\"}");
 
     }
 }

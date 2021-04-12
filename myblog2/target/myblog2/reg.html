@@ -37,7 +37,7 @@
                 password2.focus();
                 return false;
             }
-            //提交信息给后端
+            //提交信息给后端 ajax方法
             jQuery.getJSON("reg",{"username":username.val(),"password":password.val()},
             function (data) {
                 if (data != null && data.state == 200) {
@@ -49,7 +49,7 @@
         }
     </script>
 </head>
-<body>
+<body background="img.PNG" >
    <div style="text-align: center;margin-top: 70px;">
        <h1>注 册</h1>
        &nbsp;&nbsp;用户名:<input id="username" name="username" type="text"><p></p>
