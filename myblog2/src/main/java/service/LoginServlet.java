@@ -1,6 +1,5 @@
 package service;
 
-
 import dao.UserInfoDao;
 import models.Userinfo;
 import utils.ResultJSONUtils;
