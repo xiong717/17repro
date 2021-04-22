@@ -1,7 +1,7 @@
 import java.util.Arrays;
 import java.util.Scanner;
 
-public class day08 {
+public class eight {
     public static void main1(String[] args) {
         B b = new B();
         int a =b.getValue();
