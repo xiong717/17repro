@@ -1,3 +1,5 @@
+import com.sun.java_cup.internal.runtime.Scanner;
+
 public class TestDemo2 {
 
     //字符串的比较
@@ -105,10 +107,27 @@ public class TestDemo2 {
     }
 
     //字符串截取
-    public static void main(String[] args) {
+    public static void main8(String[] args) {
         String string = "abcdefg";
         System.out.println(string.substring(5));//表示从5开始到结尾
         System.out.println(string.substring(2, 5));//截取部分内容 前闭后开区间 包含2号下标的字符, 不包含5号下标
+    }
+
+
+    public static void main9(String[] args) {
+        String str1 = "   AbcDef  Edfr ed   ";
+        System.out.println(str1);
+        System.out.println(str1.trim());//去空格(trim() 去掉字符串左右空格 保留中间的空格）
+        System.out.println(str1.toLowerCase());//转大写
+        System.out.println(str1.toUpperCase());//转小写
+    }
+
+    public static void main(String[] args) {
+        String str1 = null;//代表没引用任何对象
+        String str2 = "";//代表指向的对象什么都没有
+        System.out.println(str2.isEmpty());
+        System.out.println(str1.isEmpty());
+
     }
 
 

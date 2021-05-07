@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 public class homework {
 
     public static class Example{
@@ -38,4 +40,30 @@ public class homework {
         System.out.println(s1.contains(s2));
         System.out.println(s1.substring(1, 4));
     }
+
+    public static int reverse(int x) {
+        int res = 0;
+        while( x != 0){
+            int tmp = x%10;
+            if(res >214748364||(res==214748364 && tmp>7)) {
+                res = 0;
+                break;
+            }
+            if(res < -214748364||(res==-214748364 && tmp<-8)) {
+                res =0;
+                break;
+            }
+            res = res*10+tmp;
+            x = x/10;
+        }
+        return res;
+    }
+
+    public static void main11(String[] args) {
+        Scanner scan = new Scanner(System.in);
+        int num = scan.nextInt();
+        System.out.println(reverse(num));
+
+    }
+    
 }
