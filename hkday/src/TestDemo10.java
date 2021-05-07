@@ -5,6 +5,7 @@ public class TestDemo10 {
     b6=b4+b5;
     b3=(b1+b2);*/
 
+  
     //3
     public static void main3(String[] args) {
         StringBuffer a = new StringBuffer("A");
