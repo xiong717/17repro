@@ -5,7 +5,6 @@ public class TestDemo18 {
       Integer i3 = Integer.valueOf(59);
       Integer i4 = new Integer(59);
 
-
         System.out.println(i1 == i2);
         System.out.println(i3 == i4);
         System.out.println(i1 == i3);
