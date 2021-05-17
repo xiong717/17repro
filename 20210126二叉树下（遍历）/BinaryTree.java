@@ -9,6 +9,7 @@ class BTNode {
 
 public class BinaryTree {
 
+    
     /*
      我们要首先创建二叉树，但是为了好理解，我们先以穷举的方式
      创建二叉树
