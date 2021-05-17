@@ -102,6 +102,7 @@ public class BinaryTree {
     }
     // 获取二叉树的高度
     int getHeight(BTNode root) {
+    
         if (root == null) return 0;
         int leftHeight = getHeight(root.left);
         int rightHeight = getHeight(root.right);
