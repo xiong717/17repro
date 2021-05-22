@@ -1,5 +1,9 @@
 package thread.thread0424;
 /*
+* 线程构造函数：
+* 1.设置线程名称
+* 2.设置线程任务
+* 3.设置线程分组
 * 线程名字
 * */
 public class TestDemo9 {

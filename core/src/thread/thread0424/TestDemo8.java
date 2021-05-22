@@ -6,7 +6,7 @@ import java.util.concurrent.ExecutionException;
 import java.util.concurrent.FutureTask;
 
 /**
- * 创建方式三 ：Callable + FutureTask 接收线程后执行之后的返回值
+ * 线程创建方式三 ：Callable + FutureTask 接收线程后执行之后的返回值
  * 创建一个有返回值的线程（唯一一个可以接收线程返回值的方式）
  */
 public class TestDemo8 {

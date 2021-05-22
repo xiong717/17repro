@@ -1,7 +1,9 @@
 package thread.thread0424;
 
 import com.sun.scenario.effect.impl.sw.sse.SSEBlend_SRC_OUTPeer;
-
+/*
+* 线程创建方式二 实现Runnable接口
+* */
 public class TestDemo5 {
     //创建方法二 实现Runnable接口
 

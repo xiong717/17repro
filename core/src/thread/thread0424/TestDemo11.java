@@ -3,10 +3,11 @@ package thread.thread0424;
 import com.sun.scenario.effect.impl.sw.sse.SSEBlend_SRC_OUTPeer;
 
 /*
-* 显示线程常见的属性
+* 显示线程常见的属性：id/name/线程优先级(1-10 默认是5 )/
+* 是否为守护线程(后台线程) 【默认创建的线程是用户线程 false】/线程状态
 * */
 public class TestDemo11 {
-    public static void main(String[] args) throws InterruptedException {
+    public static void main1(String[] args) throws InterruptedException {
         Thread t1 = new Thread(new Runnable() {
             @Override
             public void run() {
@@ -31,14 +32,14 @@ public class TestDemo11 {
 
         //等待线程执行完
         t1.join();//方式一
-        while (!t1.isAlive()) {
-        }//方式二
+       /* while (!t1.isAlive()) {
+        }//方式二*/
     }
 
     /**
      * 演示线程的常见属性
      */
-        public static void main1(String[] args) throws InterruptedException {
+        public static void main(String[] args) throws InterruptedException {
             Thread t1 = new Thread(new Runnable() {
                 @Override
                 public void run() {
@@ -47,7 +48,7 @@ public class TestDemo11 {
                     System.out.println("线程名称：" + t.getName());
                     System.out.println("线程状态：" + t.getState());
                     try {
-                        Thread.sleep(1000);
+                        Thread.sleep(10);//让t1 休眠 10 毫秒
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
@@ -56,17 +57,18 @@ public class TestDemo11 {
             // 启动线程
             t1.start();
             // 打印线程状态
-            Thread.sleep(100);
+            Thread.sleep(20);//让main主线程休眠 20 毫秒
             System.out.println("t1 线程状态：" + t1.getState());
             System.out.println("优先级：" + t1.getPriority());
             System.out.println("是否为守护线程：" + t1.isDaemon());
             System.out.println("是否存活：" + t1.isAlive());
             System.out.println("是否被中断：" + t1.isInterrupted());
+            System.out.println(Thread.currentThread().getState());//主线程main状态
 
             // 等待线程执行完
             t1.join(); // 方式一
-            while (!t1.isAlive()) { // 方式二
-            }
+           /* while (!t1.isAlive()) { // 方式二
+            }*/
 
         }
 }

@@ -8,7 +8,7 @@ import java.util.concurrent.FutureTask;
  * 演示线程分组
  */
 public class TestDemo10 {
-    public static void main(String[] args) {
+    public static void main1(String[] args) {
         ThreadGroup threadGroup = new ThreadGroup("跑步比赛");
         Thread t1 = new Thread(threadGroup, new Runnable() {
             @Override
@@ -46,7 +46,7 @@ public class TestDemo10 {
     }
 
     //例子不是很恰当
-    /*//执行次数
+    //执行次数
     private static final int count=1000;
 
     //线程公共任务 执行了1000次循环
@@ -81,11 +81,11 @@ public class TestDemo10 {
         //打印线程的所有信息
         threadGroup.list();
 
-        //等待线程分组中所有线程执行完 activeCount活跃的线程数
+        //等待线程分组中所有线程执行完  activeCount活跃的线程数
         while (threadGroup.activeCount()!=0) {
         }
         int total = futureTask1.get()+futureTask2.get();//1000+1000=2000
         System.out.println("执行结果："+total);
-    }*/
+    }
 
 }
