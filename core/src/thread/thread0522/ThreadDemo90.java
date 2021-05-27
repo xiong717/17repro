@@ -65,17 +65,15 @@ public class ThreadDemo90 {
         Thread t1 = new Thread(new Runnable() {
             @Override
             public void run() {
-               MyBlockingQueue myBlockingQueue = new MyBlockingQueue();
+               MyBlockingQueue myBlockingQueue = new MyBlockingQueue(100);
                //生产数据
                 while (true) {
                     int num = new Random().nextInt(10);
                     try {
-                        myBlockingQueue.offer(num);
+                        Thread.sleep(500);
                     } catch (InterruptedException e) {
-                         
+                        e.printStackTrace();
                     }
-
-                    Thread.sleep(500);
                 }
 
             }
