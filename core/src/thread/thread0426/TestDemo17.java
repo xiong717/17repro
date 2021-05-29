@@ -20,6 +20,7 @@ public class TestDemo17 {
         }
             System.out.println("啊！差点误了大事");
         },"张三");
+
         t1.start();
         Thread.sleep(310);
         System.out.println("有内鬼，终止交易");

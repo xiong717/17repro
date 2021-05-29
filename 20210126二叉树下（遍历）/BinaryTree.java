@@ -112,9 +112,35 @@ public class BinaryTree {
         return getHeight(root.right)+1;
     }
 
-    //比较两棵树是否相同
-    void sameTree(BTNode root){
+    //查找val所在的节点 没有找到返回null
+    BTNode find(BTNode root,char val) {
+        if (root == null) return null;
+        if (root.val==val) {
+            return root;
+        }
+        BTNode ret = find(root.left,val);//递归左子树
+        if (ret != null) {
+            return  ret;
+        }
 
+        ret = find(root.right,val);//递归右子树
+        if (ret != null) {
+            return ret;
+        }
+        return null;
+    }
+    //比较两棵树是否相同
+    boolean sameTree(BTNode p,BTNode q){
+     if (p == null && q== null) {
+         return true;
+     }
+     if (p ==null || q == null) {
+         return false;
+     }
+     if (p.val != q.val) {
+         return false;
+     }
+     return sameTree(p.left,q.left)&&sameTree(p.right,q.right);
 
     }
 
