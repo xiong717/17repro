@@ -7,6 +7,7 @@ public class TestDemo8 {
         B b = new B();
         int a =b.getValue();
         System.out.println(a);
+        
     }
     static class A{
         protected int value;
