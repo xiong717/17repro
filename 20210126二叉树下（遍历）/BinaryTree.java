@@ -1,9 +1,11 @@
+import java.util.*;
+
 class BTNode {
     public char val;
     public BTNode left;//左子树的引用
     public BTNode right;//右子树的引用
     public BTNode(char val){
-        this.val = val;
+       this.val = val;
     }
 }
 
@@ -32,6 +34,25 @@ public class BinaryTree {
         E.right = H;
         C.left = F;
         C.right = G;
+        return  A;
+    }
+
+    public BTNode createTree1(){
+        BTNode A = new BTNode('1');
+        BTNode B = new BTNode('2');
+        BTNode C = new BTNode('2');
+        BTNode D = new BTNode('3');
+        BTNode E = new BTNode('3');
+        BTNode F = new BTNode('4');
+        BTNode G = new BTNode('4');
+        //BTNode H = new BTNode('H');
+        A.left = B;
+        A.right = C;
+        B.left = D;
+        B.right = E;
+        //E.right = H;
+        D.left = F;
+        D.right = G;
         return  A;
     }
 
@@ -144,5 +165,199 @@ public class BinaryTree {
 
     }
 
+    //镜像二叉树
+    public boolean pd(BTNode leftTree,BTNode rightTree) {
+        if(leftTree != null && rightTree == null || leftTree == null&& rightTree!=null) {
+            return false;
+        }
+        if(leftTree == null && rightTree == null) {
+            return true;
+        }
+        if(leftTree.val != rightTree.val) {
+            return false;
+        }
+        return pd(leftTree.left,rightTree.right) &&
+                pd(leftTree.right,rightTree.left);
+    }
+    public boolean isSymmetric(BTNode root) {
 
+        if (root == null) {
+            return false;
+        }
+        return pd(root.left,root.right);
+
+    }
+
+
+    //判断一颗二叉树是不是平衡二叉树
+
+    public int height(BTNode root) {
+        if (root == null) {
+            return 0;
+        }
+        return Math.max(height(root.left),height(root.right))+1;
+    }
+    public boolean isBalanced(BTNode root) {
+        if(root == null) {
+            return true;
+        }
+        if (Math.abs(height(root.left)-height(root.right))<=1){
+           return isBalanced(root.left) && isBalanced(root.right);
+        }else {
+            return false;
+        }
+    }
+    /*
+    * 这个方法 时间复杂度非常高 因为高度是O(n) 遍历以后 其复杂度为O(n^2)
+    * */
+    public int height1(BTNode root){
+        if (root == null){
+            return 0;
+        }
+        int rightheight = height1(root.right);
+        int leftheight = height1(root.left);
+        if (leftheight>=0 && rightheight>=0 && Math.abs(leftheight-rightheight)<=1){
+            return Math.max(leftheight,rightheight)+1;
+        }else {
+            return -1;
+        }
+    }
+    public boolean isBalanced1(BTNode root) {
+        if (height(root) >=0) {
+            return true;
+        }else {
+            return false;
+        }
+    }
+
+
+    //二叉树的层序遍历
+    void levelOrderTraversal(BTNode root){
+       if (root == null) return;
+       Queue<BTNode> queue = new LinkedList<>();
+       queue.offer(root);
+       while (!queue.isEmpty()) {
+           BTNode cur = queue.poll();
+           System.out.print(cur.val);
+           if (cur.left != null || cur.right != null) {
+               queue.offer(cur.left);
+               queue.offer(cur.right);
+           }
+       }
+       }
+
+       //二叉树的分层遍历(用链表存)
+    public List<List<Integer>> levelOrder(BTNode root) {
+        List<List<Integer>> ret = new ArrayList<>();
+        if (root == null) {
+            return  ret;
+        }
+        Queue<BTNode> queue = new LinkedList<>();//分层的
+        queue.offer(root);
+        while (!queue.isEmpty()) {
+            List<Integer> list1 = new ArrayList<>();
+            int size = queue.size();
+            while (size>0){
+                BTNode cur = queue.poll();
+                list1.add((int)cur.val);
+                if (cur.left!=null ) {
+                    queue.offer(cur.left);
+                }
+                if (cur.right != null) {
+                    queue.offer(cur.right);
+                }
+                size--;
+            }
+            ret.add(list1);
+        }
+        return ret;
+    }
+    //判断是否是完全二叉树
+      boolean isCompleteTree(BTNode root) {
+        if (root == null) {
+            return true;
+        }
+        Queue<BTNode> queue = new LinkedList<>();
+        queue.offer(root);
+        while (!queue.isEmpty()) {
+                BTNode cur  = queue.poll();
+                if (cur != null){
+                  queue.offer(cur.left);
+                  queue.offer(cur.right);
+                 }else {
+                    break;
+                }
+        }
+        while (!queue.isEmpty()){
+            //依次弹出队列元素
+            BTNode node = queue.poll();
+            if (node != null) {
+                return false;
+            }else {
+                queue.poll();
+            }
+        }
+        return true;
+      }
+
+    //非递归前序遍历
+    void preOrderTree(BTNode root) {
+        if (root == null) {
+            return;
+        }
+        BTNode cur = root;
+        Stack<BTNode> stack = new Stack<>();
+        while (cur!=null||!stack.isEmpty()) {
+            while (cur != null) {
+                stack.push(cur);
+                System.out.print(cur.val);
+                cur = cur.left;
+            }
+            BTNode top = stack.pop();
+            cur = top.right;
+        }
+        System.out.println();
+    }
+
+    //非递归中序遍历
+    void inOrderTree(BTNode root) {
+        if (root == null) {
+            return;
+        }
+        BTNode cur = root;
+        Stack<BTNode> stack = new Stack<>();
+        while (cur!=null||!stack.isEmpty()) {
+            while (cur != null) {
+                stack.push(cur);
+                cur = cur.left;
+            }
+            BTNode top = stack.pop();
+            System.out.print(top.val);
+            cur = top.right;
+        }
+        System.out.println();
+    }
+    //非递归后序遍历
+    void postOrder(BTNode root){
+        if (root==null) {
+            return;
+        }
+        Stack<BTNode> stack = new Stack<>();
+        BTNode cur = root;
+        BTNode prev = null;
+        while (cur!=null || !stack.isEmpty()) {
+            while (cur != null) {
+                stack.push(cur);
+                cur = cur.left;
+            }
+            BTNode top = stack.peek();
+            if (top.right == null|| top.right==prev) {
+                stack.pop();
+                System.out.print(top.val);//左边为null 右边也为null 打印中间
+                prev = top;
+            }else {
+                cur = top.right;
+            }
+        }
+    }
 }
