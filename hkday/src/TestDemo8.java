@@ -9,6 +9,7 @@ public class TestDemo8 {
         System.out.println(a);
     }
     static class A{
+        
         protected int value;
 
         public A(int v) {
