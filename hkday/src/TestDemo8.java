@@ -55,7 +55,8 @@ public class TestDemo8 {
             for (int i = 0; i < str.length; i++) {
                 if (i < str.length - 1) {
                     arr[i] = Integer.parseInt(str[i]);
-                } else {
+                } 
+               else {
                     k = Integer.parseInt(str[i]);
                 }
             }
