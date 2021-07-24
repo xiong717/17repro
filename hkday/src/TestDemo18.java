@@ -17,6 +17,7 @@ public class TestDemo18 {
 
 
     public static void main(String[] args) {
+        
         TestDemo18 t = new TestDemo18();
         t.change(t.str);
         System.out.println(t.str);
