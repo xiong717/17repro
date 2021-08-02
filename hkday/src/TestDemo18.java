@@ -1,6 +1,5 @@
 public class TestDemo18 {
     public static void main1(String[] args) {
-        
       Integer i1 = 59;
       int i2 = 59;
       Integer i3 = Integer.valueOf(59);
