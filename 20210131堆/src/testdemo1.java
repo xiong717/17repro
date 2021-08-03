@@ -1,3 +1,4 @@
+import java.util.Arrays;
 import java.util.Comparator;
 import java.util.PriorityQueue;
 
@@ -57,9 +58,14 @@ public class testdemo1 {
     }
     public static void main(String[] args) {
           int[] array ={27,15,19,18,28,34,65,49,25,37};
-          topkmax(array,3);
+          Arrays.sort(array);
+        for (int i = 0; i <array.length ; i++) {
+            System.out.print(array[i]+" ");
+        }
         System.out.println();
-          topkmin(array,3);
+        topkmin(array,3);
+        System.out.println();
+        topkmax(array,3);
     }
 
 
