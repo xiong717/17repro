@@ -57,11 +57,48 @@ public class testdemo1 {
             System.out.print(maxheap.poll()+" ");
         }
     }
-    //找第k小的元素， 思路： 建立大小为k的 大堆 等数组遍历完成后，堆顶的元素就是第k小的元素
-    //堆排序 从小到大排序，建立大堆
-    public static void heapsort(){
 
+    //找第k小的元素， 思路： 建立大小为k的 大堆 等数组遍历完成后，堆顶的元素就是第k小的元素
+
+
+    //堆排序 从小到大排序，建立大堆
+    private static void createbigheap(int[] array) {
+        for (int i =( array.length-1-1)/2; i >=0; i--) {
+            adjustdown(array,i,array.length);
+        }
     }
+
+    private static void adjustdown(int[] array, int parent, int length) {
+        int child = 2*parent+1;
+        while (child>length){
+            if (child+1<length&& array[child]<array[child+1]){
+                child++;
+            }
+            if (array[child] >array[parent]){
+                int tmp = array[child];
+                array[child] = array[parent];
+                array[parent] = tmp;
+                parent = child;
+                child = 2*parent+1;
+            }else {
+                break;
+            }
+        }
+    }
+    public static void heapsort2(int[] array){
+        createbigheap(array);
+        int end = array.length-1;
+        while (end>0){
+            int tmp = array[0];
+            array[0]= array[end];
+            array[end] = tmp;
+            adjustdown(array,0,end);
+            end--;
+        }
+    }
+
+
+
 
 
     public static void main(String[] args) {
@@ -74,5 +111,8 @@ public class testdemo1 {
         topkmin(array,3);
         System.out.println();
         topkmax(array,3);
+        System.out.println();
+        heapsort2(array);//堆排序
+        System.out.print(Arrays.toString(array));
     }
 }
