@@ -11,6 +11,7 @@ public class testdemo1 {
                 new Comparator<Integer>() {
                     @Override
                     public int compare(Integer o1, Integer o2) {
+
                         return o1-o2;//小堆
                     }
                 });
@@ -56,9 +57,16 @@ public class testdemo1 {
             System.out.print(maxheap.poll()+" ");
         }
     }
+    //找第k小的元素， 思路： 建立大小为k的 大堆 等数组遍历完成后，堆顶的元素就是第k小的元素
+    //堆排序 从小到大排序，建立大堆
+    public static void heapsort(){
+
+    }
+
+
     public static void main(String[] args) {
-          int[] array ={27,15,19,18,28,34,65,49,25,37};
-          Arrays.sort(array);
+        int[] array ={27,15,19,18,28,34,65,49,25,37};
+        Arrays.sort(array);
         for (int i = 0; i <array.length ; i++) {
             System.out.print(array[i]+" ");
         }
@@ -67,6 +75,4 @@ public class testdemo1 {
         System.out.println();
         topkmax(array,3);
     }
-
-
 }
