@@ -4,20 +4,24 @@ import java.util.PriorityQueue;
 
 public class TestDemo {
     //建立了大根堆 向下调整
-    public static void main(String[] args) {
+    public static void main1(String[] args) {
         HeapDemo heapDemo = new HeapDemo();
         int[] array ={27,15,19,18,28,34,65,49,25,37};
         heapDemo.creatBigHeap(array);
         heapDemo.show();
         heapDemo.push(100);
         heapDemo.show();
+        heapDemo.heapsort();
+        heapDemo.show();
     }
     //建立了小根堆 向下调整
-    public static void main2(String[] args) {
+    public static void main(String[] args) {
         HeapDemo heapDemo = new HeapDemo();
         int[] array ={27,15,19,18,28,34,65,49,25,37};
         heapDemo.createSmallHeap(array);
         heapDemo.show();
+       heapDemo.heapsortmax();
+       heapDemo.show();
     }
 
     public static void main3(String[] args) {

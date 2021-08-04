@@ -140,4 +140,29 @@ public class HeapDemo {
         }
         System.out.println();
     }
+    //找第k小的元素， 思路： 建立大小为k的 大堆 等数组遍历完成后，堆顶的元素就是第k小的元素
+
+
+    //堆排序 从小到大排序，建立大堆
+    public  void heapsort(){
+        int end = this.usedsize-1;
+        while (end>0){
+            int tmp = this.elem[0];
+            this.elem[0] = this.elem[end];
+            this.elem[end] = tmp;
+            adjustDown(0,end);
+            end--;
+        }
+    }
+
+    public void heapsortmax(){
+        int end = this.usedsize-1;
+        while (end>0){
+            int tmp = this.elem[0];
+            this.elem[0] = this.elem[end];
+            this.elem[end] = tmp;
+            shiftDown(0,end);
+            end--;
+        }
+    }
 }
