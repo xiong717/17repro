@@ -371,7 +371,7 @@ public class TestSort {
         }
     }
 
-    public static void main(String[] args) {
+    public static void main8(String[] args) {
         int[] array = {10,6,7,1,3,9,4,2};
         System.out.println(Arrays.toString(array));
         mergesort(array,0,array.length-1);
@@ -379,5 +379,56 @@ public class TestSort {
     }
 
     //非递归
-    
+    public static void merge2(int[] array,int gap) {
+        int s1 = 0;
+        int e1 = s1+gap-1;
+        int s2 = e1+1;
+        int e2 = s2+gap-1<array.length?s2+gap-1:array.length-1;
+
+        int[] tmp= new int[array.length];
+        int k=0;
+        //说明有两个区间要归并
+        while (s2 < array.length){
+            while (s1 <= e1 && s2<=e2){
+                if (array[s1] <= array[s2]){
+                    tmp[k++] = array[s1++];
+                }else{
+                    tmp[k++] = array[s2++];
+                }
+            }
+
+            while (s1 <=e1){
+                tmp[k++] = array[s1++];
+            }
+            while (s2 <= e2) {
+                tmp[k++] = array[s2++];
+            }
+            //这里开始 都有可能越界
+             s1 = e2+1;
+             e1 = s1+gap-1;
+             s2 = e1+1;
+             e2 = s2+gap-1<array.length?s2+gap-1:array.length-1;
+        }
+
+        //s2 已经越界了
+        while (s1 < array.length){
+            tmp[k++] = array[s1++];
+        }
+
+        for (int i = 0; i <tmp.length ; i++) {
+            array[i] = tmp[i];
+        }
+
+    }
+
+    public static void main(String[] args) {
+        int[] array = {10,6,7,1,3,9,4,2};
+        System.out.println(Arrays.toString(array));
+
+        for (int i = 1; i <array.length ; i=i*2) {
+           merge2(array,i);
+        }
+
+        System.out.println(Arrays.toString(array));
+    }
 }
