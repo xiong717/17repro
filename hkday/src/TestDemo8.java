@@ -44,6 +44,7 @@ public class TestDemo8 {
 
     //求n个数总最小的k个
     public static void main(String[] args) {
+        
         Scanner in = new Scanner(System.in);
         while (in.hasNext()) {
             String tmp = in.nextLine();
