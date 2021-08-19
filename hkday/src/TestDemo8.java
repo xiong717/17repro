@@ -1,4 +1,6 @@
 import java.util.Arrays;
+import java.util.Comparator;
+import java.util.PriorityQueue;
 import java.util.Scanner;
 
 public class TestDemo8 {
@@ -8,7 +10,6 @@ public class TestDemo8 {
         System.out.println(a);
     }
     static class A{
-        
         protected int value;
 
         public A(int v) {
@@ -43,8 +44,7 @@ public class TestDemo8 {
     }
 
     //求n个数总最小的k个
-    public static void main(String[] args) {
-        
+    public static void main2(String[] args) {
         Scanner in = new Scanner(System.in);
         while (in.hasNext()) {
             String tmp = in.nextLine();
@@ -54,8 +54,7 @@ public class TestDemo8 {
             for (int i = 0; i < str.length; i++) {
                 if (i < str.length - 1) {
                     arr[i] = Integer.parseInt(str[i]);
-                } 
-               else {
+                } else {
                     k = Integer.parseInt(str[i]);
                 }
             }
@@ -71,5 +70,40 @@ public class TestDemo8 {
                 }
             }
         }
+    }
+
+    public static void main(String[] args){
+        Scanner scan = new Scanner(System.in);
+        String str = scan.nextLine();
+        String[] tmp = str.split(" ");
+        int[] arr = new int[tmp.length-1];
+        int j = 0;
+        for (; j < tmp.length-1; j++) {
+            arr[j] = Integer.parseInt(tmp[j]);
+        }
+        int k = Integer.parseInt(tmp[tmp.length-1]);
+        PriorityQueue<Integer> qu = new PriorityQueue<>(new Comparator<Integer>() {
+            @Override
+            public int compare(Integer o1, Integer o2) {
+                return o2-o1;
+            }
+        });
+        for (int i = 0; i < k; i++) {
+            qu.offer(arr[i]);
+        }
+        for (int i = k; i < arr.length; i++) {
+            if (qu.peek() >arr[i]){
+                qu.poll();
+                qu.offer(arr[i]);
+            }
+        }
+        int[] ret = new int[k];
+        for (int i = 0; i<k;i++) {
+            ret[i] = qu.poll();
+        }
+        for (int i = k-1; i >=0 ; i--) {
+            System.out.print(ret[i]+" ");
+        }
+
     }
 }
