@@ -1,7 +1,4 @@
-import java.util.Arrays;
-import java.util.Comparator;
-import java.util.PriorityQueue;
-import java.util.Scanner;
+import java.util.*;
 
 public class TestDemo8 {
     public static void main1(String[] args) {
@@ -72,7 +69,7 @@ public class TestDemo8 {
         }
     }
 
-    public static void main(String[] args){
+    public static void main3(String[] args){
         Scanner scan = new Scanner(System.in);
         String str = scan.nextLine();
         String[] tmp = str.split(" ");
@@ -105,5 +102,112 @@ public class TestDemo8 {
             System.out.print(ret[i]+" ");
         }
 
+    }
+
+
+    //删数
+        public static void main4(String[] args) {
+            Scanner sc = new Scanner(System.in);
+            while (sc.hasNext()) {
+                int n = sc.nextInt();
+                if (n > 1000) {
+                    n = 999;
+                }
+                List<Integer> list = new ArrayList<Integer>();
+                for (int i = 0; i < n; i++) {
+                    list.add(i); }
+                int i = 0;
+                while (list.size() > 1) {
+                    i = (i + 2) % list.size();
+                    list.remove(i);
+                }
+                System.out.println(list.get(0));
+            }
+        }
+
+        //删数
+    public static void main5(String[] args) {
+        Scanner scan = new Scanner(System.in);
+        int num = scan.nextInt();
+        Queue<Integer> qu1 = new LinkedList<>();
+        Queue<Integer> qu2 = new LinkedList<>();
+        int count = 0;
+        for (int i = 0; i <num ; i++) {
+            qu1.offer(i);
+        }
+        while (qu1.size()+qu2.size() != 1){
+            while (!qu1.isEmpty()){
+                if (count==2){
+                    //删数
+                    qu1.poll();
+                    count=0;
+                }else {
+                    qu2.offer(qu1.poll());
+                    count++;
+                }
+            }
+            while (!qu2.isEmpty()){
+                if (count ==2){
+                    //删数
+                    qu2.poll();
+                    count=0;
+                }else {
+                    qu1.offer(qu2.poll());
+                    count++;
+                }
+            }
+        }
+        if (qu1.size() == 1){
+            System.out.println(qu1.poll());
+        }
+        if (qu2.size() == 1){
+            System.out.println(qu2.poll());
+        }
+    }
+
+
+    public static void main(String[] args) {
+        Scanner scan = new Scanner(System.in);
+        String s1 = scan.nextLine();
+        String[] s2 = s1.split(" ");
+        int[] arr = new int[s2.length-1];
+        for (int i = 0; i <s2.length-1 ; i++) {
+            arr[i] = Integer.parseInt(s2[i]);
+        }
+        int k = Integer.parseInt(s2[s2.length-1]);
+        int start = 0;
+        int end = arr.length-1;
+        int index = pivot(start,end,arr);
+        //快排
+
+        while (index != k){
+            if (index > k){
+                end = index-1;
+                index = pivot(start,end,arr);
+            }else {
+                start = index+1;
+                index = pivot(start,end,arr);
+            }
+        }
+        Arrays.sort(arr,0,k);
+        for (int i = 0; i < k; i++) {
+            System.out.print(arr[i]+" ");
+        }
+    }
+
+    public static  int pivot(int start,int end, int[] arr){
+        int tmp = arr[start];
+        while (start<end){
+            while (start<end && arr[end]>=tmp){
+                end--;
+            }
+            arr[start] =arr[end];
+            while (start<end && arr[start] <=tmp){
+                start++;
+            }
+            arr[end] = arr[start];
+        }
+        arr[start] = tmp;
+        return start;
     }
 }
