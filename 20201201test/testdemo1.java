@@ -1,7 +1,9 @@
 import sun.util.resources.ga.LocaleNames_ga;
 
 public class testdemo1 {
+    
     public static void main1(String[] args) {
+        
         System.out.println("hello java");
         int a = -1;
         System.out.println(a);
